@@ -12,7 +12,6 @@ Transformers employ the concept of 'Attention' to understand and remember relati
 
 In layman's terms, Transformers are like more attentive students; they pay attention to the specifics (individual words) and the context (the overall sentence structure) simultaneously, resulting in a highly accurate understanding.
 
-If Neural Networks are new to you, do not worry. They are simply mathematical models inspired by the functioning of the human brain, designed to recognize patterns. They 'learn' from observational data and can improve with more training.
 
 ## Requirements
 - Python 3.5 or above for scripting.
