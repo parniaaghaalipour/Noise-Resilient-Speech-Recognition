@@ -51,6 +51,53 @@ Let's break down the model you'll be working with:
 
 The most critical feature of the Transformer architecture is the implementation of 'Attention' mechanism. Unlike conventional models that process the input sequence part by part or ignore the sequence altogether, Transformer model processes the entire sequence at once and in parallel. This means it handles all positions simultaneously and more attentively.
 
+## Training
+This code contains the training script for a speech recognition system. The input speech data is processed by using Connect-Times (CTC) loss which is commonly used in speech recognition tasks. After each training epoch, the loss is written to tensorboard for tracking.
+
+## Usage
+
+You can determine the number of epochs, learning rate, momentum, weight decay and batch size by passing command-line arguments when running the script:
+
+```bash
+python train.py --epochs 15 --learning_rate 0.001 --momentum 0.8 --weight_decay 0.0006 --batch_size 64
+```
+
+If no command-line argument is passed, the script uses the default values:
+
+- Epochs: 10
+- Learning rate: 0.01
+- Momentum: 0.9
+- Weight decay: 0.0005
+- Batch size: 32
+
+## Data
+
+This script assumes data is loaded using a custom DataLoader. The loader is responsible for taking in a batch size argument and a path to train and test datasets.
+
+Please replace 'train_path' and 'test_path' with actual paths to your train and test data.
+
+## Model
+
+The Transformer Model is created with arguments: input_dim, num_heads, num_layers, dropout, output_dim. Please replace these values with your actual values.
+
+The model is sent to GPU if one is available, and trained using SGD optimizer with the given learning rate, momentum and weight decay. The learning rate is scheduled to decrease every 7 epochs by a factor of 0.1.
+
+## Decoding
+
+Decoding is performed by a custom GreedyDecoder. Replace this with decoding method suitable for your task, if needed.
+
+## Saving the model
+
+The script saves the trained model weights after the training process to 'model.pth'. 
+
+## TensorBoard
+
+Tensorboard is used to track the training loss. If you have Tensorboard installed, you can start it by running:
+
+```bash
+tensorboard --logdir=runs
+
+
 ## Licence
 [MIT](https://choosealicense.com/licenses/mit/)
 
